@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Usuario</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background-size: cover;
+            background-position: center;
+            animation: changeBackground 9s infinite ease-in-out, fade 3s infinite ease-in-out;
+        }
+
+        /* Menú superior */
+        .menu {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+        .menu a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding-top: 120px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Foto de perfil */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        /* Ocultar input de archivo */
+        #file-input {
+            display: none;
+        }
+
+        /* Información del usuario */
+        .user-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            animation: slideIn 1s ease-in-out;
+        }
+        .user-info h2, .user-info p {
+            margin: 10px 0;
+        }
+
+
+        .purchase-list {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+        .purchase-list h2 {
+            margin-top: 0;
+        }
+        .purchase-list .item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #007bff;
+            transition: background-color 0.3s;
+        }
+        .purchase-list .item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .purchase-list .item p {
+            margin: 5px 0;
+        }
+
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(0); }
+        }
+        
+
+        @keyframes changeBackground {
+            0% { background-image: url('imagen1.webp'); }
+            33% { background-image: url('imagen2.avif'); }
+            66% { background-image: url('imagen3.webp'); }
+            100% { background-image: url('imagen4.jpg'); }
+        }
+        @keyframes fade {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="menu">
+        <a href="productos.html">Productos</a>
+        <a href="usuario.html">Usuario</a>
+        <a href="metodo-pago.html">Método de Pago</a>
+    </div>
+
+
+    <div class="container" id="usuario">
+        <!-- Foto de perfil (Botón para seleccionar imagen) -->
+        <label for="file-input">
+            <img src="imagen5.png" alt="Foto de Perfil" class="profile-pic" id="profile-pic">
+        </label>
+        <input type="file" id="file-input" accept="image/*">
+
+
+        <div class="user-info">
+            <h2>Nombre de Usuario: Juan</h2>
+            <p>Correo Electrónico: juan@gmail.com</p>
+        </div>
+
+ 
+        <div class="purchase-list">
+            <h2>Productos Pagados</h2>
+            <div class="item">
+                <p><strong>Producto:</strong> Traje Espacial</p>
+                <p><strong>Fecha:</strong> 2024-09-05</p>
+                <p><strong>Precio:</strong> $20.00</p>
+            </div>
+            <div class="item">
+                <p><strong>Producto:</strong> Cohete Espacial</p>
+                <p><strong>Fecha:</strong> 2024-09-06</p>
+                <p><strong>Precio:</strong> $35.00</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const profilePic = document.getElementById('profile-pic');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>
+

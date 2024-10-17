@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-image: url('imagen6.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow-x: hidden;
+        }
+
+        .menu {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .menu a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .container {
+            padding-top: 120px;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .product-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background-image 0.5s;
+            cursor: pointer;
+        }
+
+        .product-box img {
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s;
+        }
+
+        .product-box:hover {
+            transform: scale(1.05);
+            background-image: url('');
+        }
+
+        .product-box:hover img {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .product-box p {
+            margin: 10px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #007bff;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 10px;
+            animation: slideUp 0.5s ease-in-out;
+        }
+
+        .modal-content img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            margin: 10px 0;
+            color: #ccc;
+        }
+
+        .close-button, .buy-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .close-button:hover, .buy-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="productos.html">Productos</a>
+        <a href="usuario.html">Usuario</a>
+        <a href="metodo-pago.html">Método de Pago</a>
+    </div>
+
+    <!-- Contenedor de productos -->
+    <div class="container" id="productos">
+        <!-- Producto 1 -->
+        <div class="product-box" onclick="openModal('product1-modal')">
+            <img src="https://electronica-basica.com/wp-content/uploads/2020/01/telescopios.jpg" alt="Producto 1">
+            <p>telescopio</p>
+            <p>Precio: $10.00</p>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-box" onclick="openModal('product2-modal')">
+            <img src="https://argentear.com/wp-content/uploads/2017/03/Planetario.jpg" alt="Producto 2">
+            <p>planetario</p>
+            <p>Precio: $15.00</p>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-box" onclick="openModal('product3-modal')">
+            <img src="imagen16.jfif" alt="Producto 3">
+            <p>lampara con forma de luna</p>
+            <p>Precio: $20.00</p>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product-box" onclick="openModal('product4-modal')">
+            <img src="imagen17.jfif" alt="Producto 4">
+            <p>pegatinas brillantes</p>
+            <p>Precio: $25.00</p>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="product-box" onclick="openModal('product5-modal')">
+            <img src="imagen18.jfif" alt="Producto 5">
+            <p>ciclo lunar</p>
+            <p>Precio: $30.00</p>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="product-box" onclick="openModal('product6-modal')">
+            <img src="imagen19.jpg" alt="Producto 6">
+            <p>lapices con lunas</p>
+            <p>Precio: $35.00</p>
+        </div>
+
+        <!-- Producto 7 -->
+        <div class="product-box" onclick="openModal('product7-modal')">
+            <img src="" alt="Producto 7">
+            <p>Producto 7</p>
+            <p>Precio: $40.00</p>
+        </div>
+
+        <!-- Producto 8 -->
+        <div class="product-box" onclick="openModal('product8-modal')">
+            <img src="" alt="Producto 8">
+            <p>Producto 8</p>
+            <p>Precio: $45.00</p>
+        </div>
+    </div>
+
+    <!-- Modales de información de productos -->
+    <!-- Producto 1 Modal -->
+    <div class="modal" id="product1-modal">
+        <div class="modal-content">
+            <img src="imagen20.jpg" alt="Producto 1">
+            <p>Descripción del telescopio: un telescopio culaquiera mirada saturada y apato para la noche</p>
+            <button class="buy-button" onclick="addToCart('Producto 1', 10.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product1-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 2 Modal -->
+    <div class="modal" id="product2-modal">
+        <div class="modal-content">
+            <img src="imagen20.jfif" alt="Producto 2">
+            <p>Descripción del planetario: listo para un viaje de conocimientos donde puedes ir con tu familia y ammigos ?listo para conocer los origenes del universo?.</p>
+            <button class="buy-button" onclick="addToCart('Producto 2', 15.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product2-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 3 Modal -->
+    <div class="modal" id="product3-modal">
+        <div class="modal-content">
+            <img src="imagen21.jfif" alt="Producto 3">
+            <p>Descripción de la lampara: lampara de alta calidad. sientate como y libre y expiremntar todo lo que quieras conocer en tus noches</p>
+            <button class="buy-button" onclick="addToCart('Producto 3', 20.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product3-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 4 Modal -->
+    <div class="modal" id="product4-modal">
+        <div class="modal-content">
+            <img src="imagen22.jfif" alt="Producto 4">
+            <p>Descripción de las pegatinas: sientate libre para concer las mil estreelas en el universo mas para tus hijos y sobrinos </p>
+            <button class="buy-button" onclick="addToCart('Producto 4', 25.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product4-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 5 Modal -->
+    <div class="modal" id="product5-modal">
+        <div class="modal-content">
+            <img src="imagen23.jfif" alt="Producto 5">
+            <p>Descripción de la imagen: aprendisaje perfecto para ver el ciclo lunar y ver la belleza de la luna</p>
+            <button class="buy-button" onclick="addToCart('Producto 5', 30.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product5-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 6 Modal -->
+    <div class="modal" id="product6-modal">
+        <div class="modal-content">
+            <img src="imagen24.jfif" alt="Producto 6">
+            <p>Descripción de los lapicez: son unicos y muy uenos para explotar y colorear tu imaginacion vienen en una caja con muchos detalles perfecto para ti</p>
+            <button class="buy-button" onclick="addToCart('Producto 6', 35.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product6-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 7 Modal -->
+    <div class="modal" id="product7-modal">
+        <div class="modal-content">
+            <img src="" alt="Producto 7">
+            <p>Descripción del Producto 7. Equipamiento confiable y duradero.</p>
+            <button class="buy-button" onclick="addToCart('Producto 7', 40.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product7-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Producto 8 Modal -->
+    <div class="modal" id="product8-modal">
+        <div class="modal-content">
+            <img src="" alt="Producto 8">
+            <p>Descripción del Producto 8. Un accesorio que no te puede faltar.</p>
+            <button class="buy-button" onclick="addToCart('Producto 8', 45.00)">Comprar</button>
+            <button class="close-button" onclick="closeModal('product8-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function addToCart(productName, price) {
+            alert(`${productName} añadido al carrito por $${price}.`);
+            closeModal(`${productName.toLowerCase().replace(/\s/g, '')}-modal`);
+            // Aquí podrías agregar el código para actualizar la lista de compras en el perfil del usuario.
+        }
+    </script>
+
+</body>
+</html>

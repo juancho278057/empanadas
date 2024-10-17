@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método de Pago</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background-size: cover;
+            background-position: center;
+            animation: changeBackground 12s infinite ease-in-out, fade 3s infinite ease-in-out;
+        }
+
+        .menu {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+        .menu a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .container {
+            padding-top: 120px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .payment-option {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .payment-option:hover {
+            transform: scale(1.05);
+        }
+
+        .payment-option img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .payment-option p {
+            margin: 10px 0;
+        }
+
+        .extract-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .extract-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        @keyframes changeBackground {
+            0% { background-image: url('imagen9.jfif'); }
+            25% { background-image: url('imagen10..webp'); }
+            50% { background-image: url('imagen11.png'); }
+            75% { background-image: url('imagen12.webp'); }
+            100% { background-image: url('imagen13.png'); }
+        }
+        @keyframes fade {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <div class="menu">
+        <a href="productos.html">Productos</a>
+        <a href="usuario.html">Usuario</a>
+        <a href="metodo-pago.html">Método de Pago</a>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container" id="metodo-pago">
+        <h1>Método de Pago</h1>
+
+        <!-- Opción 1: Tarjeta de Crédito -->
+        <div class="payment-option">
+            <img src="imagen14.webp" alt="Tarjeta de Crédito">
+            <div>
+                <p>Tarjeta de Crédito</p>
+                <input type="text" placeholder="Número de tarjeta" style="padding: 10px; border-radius: 5px; width: 80%;"/>
+            </div>
+        </div>
+
+        <!-- Opción 2: Pago en Moneda/Billetes -->
+        <div class="payment-option">
+            <img src="imagen15.jpeg" alt="Moneda/Billetes">
+            <div>
+                <p>Pago en Moneda/Billetes</p>
+                <input type="text" placeholder="Monto a extraer" style="padding: 10px; border-radius: 5px; width: 80%;"/>
+            </div>
+        </div>
+
+        <!-- Opción 3: Extraer -->
+        <div class="payment-option">
+            <div>
+                <p>Extraer</p>
+                <button class="extract-button" onclick="completeExtraction()">Extraer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function completeExtraction() {
+            alert('La extracción fue completada');
+        }
+    </script>
+
+</body>
+</html>
